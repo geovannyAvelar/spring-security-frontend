@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+      <h:head>
+        <title>Person</title>
+      </h:head>
+
+      <h:body>
+        <form class="form-inline" action="logout" method="post">
+            <input type="submit" value="Log out" 
+                   class="ui-button ui-widget 
+                          ui-state-default ui-corner-all 
+                          ui-button-text-only"/> 
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        </form>
+
+        <br />
+
+        <p:dataTable var="person" value="#{personController.peopleList}" 
+                    selection="#{personController.person}" rowKey="#{person.id}">
+                    
+          <p:column headerText="Name" >
+              <h:outputText value="#{person.name}" />
+          </p:column>
+          
+          <p:column headerText="Age">
+              <h:outputText value="#{person.age}" />
+          </p:column>
+
+       </p:dataTable>
+
+      </h:body>
+
+</html>

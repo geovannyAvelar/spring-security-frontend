@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+  xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html">
+
+  <h:head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  </h:head>
+
+  <h:body>
+    
+    <style>
+     .input-field label {
+      	color: #42A5F5 !important";
+      }
+      
+      .input-field input[type=text]:focus+label {
+      	color: #42A5F5 !important;
+      }
+      
+      .input-field input[type=text]:focus {
+      	border-bottom: 1px solid #42A5F5 !important;
+      	box-shadow: 0 1px 0 0 #42A5F5 !important;
+      }
+      
+      .input-field input[type=password]:focus+label {
+      	color: #42A5F5 !important;
+      }
+      
+      .input-field input[type=password]:focus {
+        border-bottom: 1px solid #42A5F5;
+        box-shadow: 0 1px 0 0 #42A5F5;
+      }
+    </style>
+    
+    <div class="row">
+      <form action="${request.contextPath}/login" method="POST" class="col s4 offset-s4">
+        <div class="input-field col s12">
+            <input id="username" type="text" name="username" />
+            <label for="username">Username</label>
+        </div>
+        
+        <div class="input-field col s12">
+            <input id="password" type="password" name="password" />
+            <label for="password">Password</label>
+        </div>
+
+        <button type="submit" class="waves-effect waves-light btn blue lighten-1">Login</button>
+    
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+        
+        <br />
+        
+        <h6>
+            <h:outputText value="Wrong username or password" rendered="#{param['error']}" class="red-text darken-1"/>
+        </h6>
+        
+      </form>
+    </div>
+
+  </h:body>
+
+</html>
